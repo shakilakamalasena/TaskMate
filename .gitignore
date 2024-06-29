@@ -1,0 +1,10 @@
+api/.gitignore
+api/app.js
+api/package-lock.json
+api/package.json
+api/controllers/auth.controller.js
+api/lib/prisma.js
+api/prisma/schema.prisma
+api/routes/auth.route.js
+api/routes/post.route.js
+api/routes/user.route.js
