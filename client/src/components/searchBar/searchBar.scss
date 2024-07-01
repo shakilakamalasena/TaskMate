@@ -7,6 +7,7 @@
         justify-content: space-between;
         height: 64px;
         gap: 5px;
+        justify-content: left;
 
         @include sm {
             flex-direction: column;
@@ -16,10 +17,15 @@
 
         select {
             padding: 0px 10px;
-            width: 200px;
+            width: auto;
             border-color: #1c3988;
             color: #1c3988;
             padding: 10px;
+
+            @include md {
+                width: auto;
+                padding: 20px;
+            }
 
             @include sm {
                 width: auto;
@@ -28,20 +34,21 @@
         }
 
         input {
-            // width: 400px;
-            width: auto;
+            width: max-content;
             border: none;
             background-image: url("/pin.png");
             background-position: 10px;
             background-repeat: no-repeat;
             background-size: 25px;
             padding-left: 45px;
+            display: inline-block;
+            flex: 1;
 
             @include sm {
-                // display: none;
                 padding: 20px;
                 padding-left: 45px;
                 border: 1px solid #1c3988;
+                width: auto;
             }
         }
 
@@ -49,7 +56,6 @@
             border: none;
             cursor: pointer;
             background-color: #1c3988;
-            // flex: 1;
             width: 64px;
             &:hover {
                 transition: all 0.4s ease-in;
