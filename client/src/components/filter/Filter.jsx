@@ -1,0 +1,83 @@
+import React from "react";
+import "./filter.scss";
+
+const Filter = () => {
+    return (
+        <div className="filter">
+            <h1>
+                Search results for <b>London</b>
+            </h1>
+            <div className="top">
+                <div className="item">
+                    <label htmlFor="city">Location</label>
+                    <input
+                        type="text"
+                        id="city"
+                        name="city"
+                        placeholder="City Location"
+                    />
+                </div>
+            </div>
+            <div className="bottom">
+                <div className="item">
+                    <label htmlFor="type">Type</label>
+                    <select name="type" id="type">
+                        <option value="">any</option>
+                        <option value="carpentry">Carpentry</option>
+                        <option value="plumbing">Plumbing</option>
+                        <option value="electrical">Electrical</option>
+                        <option value="painting">Painting</option>
+                        <option value="gardening">Gardening</option>
+                        <option value="cleaning">Cleaning</option>
+                        <option value="handyman">Handyman</option>
+                        <option value="hvac">HVAC</option>
+                        <option value="locksmith">Locksmith</option>
+                        <option value="renovation">Renovation</option>
+                        <option value="roofing">Roofing</option>
+                        <option value="landscaping">Landscaping</option>
+                    </select>
+                </div>
+                {/* <div className="item">
+                    <label htmlFor="property">Property</label>
+                    <select name="property" id="property">
+                        <option value="">any</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="house">House</option>
+                    </select>
+                </div> */}
+                <div className="item">
+                    <label htmlFor="minPrice">Min Price</label>
+                    <input
+                        type="number"
+                        id="minPrice"
+                        name="minPrice"
+                        placeholder="any"
+                    />
+                </div>
+                <div className="item">
+                    <label htmlFor="maxPrice">Max Price</label>
+                    <input
+                        type="number"
+                        id="maxPrice"
+                        name="maxPrice"
+                        placeholder="any"
+                    />
+                </div>
+                {/* <div className="item">
+                    <label htmlFor="bedroom">Bedroom</label>
+                    <input
+                        type="number"
+                        id="bedroom"
+                        name="bedroom"
+                        placeholder="any"
+                    />
+                </div> */}
+                <button>
+                    <img src="/search.png" alt="" />
+                </button>
+            </div>
+        </div>
+    );
+};
+
+export default Filter;
