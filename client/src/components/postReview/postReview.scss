@@ -1,0 +1,90 @@
+.postReview {
+    display: flex;
+    flex-direction: column;
+
+    .item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 2px;
+
+        label {
+            font-size: 12px;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+    }
+
+    .top {
+        input {
+            width: 100%;
+        }
+    }
+
+    .bottom {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        // flex-wrap: wrap;
+
+        button {
+            width: 100px;
+            padding: 10px;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+            background-color: #1c3988;
+            &:hover {
+                transition: all 0.3s ease-in;
+                background-color: #6e8ae9;
+                scale: 1.02;
+            }
+
+            img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+
+    // padding: 0px 10px;
+
+    // .top {
+    //     .item {
+    //         display: flex;
+    //         flex-direction: column;
+    //         width: 100%;
+
+    //         input {
+    //             padding: 10px;
+    //             border: 1px solid #e0e0e0;
+    //             border-radius: 5px;
+    //             font-size: 14px;
+    //         }
+    //     }
+    // }
+
+    // .bottom {
+    //     .item {
+    //         // display: flex;
+    //         // justify-content: space-between;
+    //         // flex-direction: row;
+    //         // width: 100%;
+
+    //         input {
+    //             display: flex;
+    //             flex-direction: column;
+    //             padding: 10px;
+    //             border: 1px solid #e0e0e0;
+    //             border-radius: 5px;
+    //             font-size: 14px;
+    //         }
+    //     }
+    // }
+}

@@ -12,9 +12,9 @@ const Navbar = () => {
                         <span>TaskMate</span>
                     </a>
                     <a href="/">Home</a>
-                    <a href="/">About</a>
+                    <a href="/list">Browse</a>
                     <a href="/">Contacts</a>
-                    <a href="/">Agents</a>
+                    <a href="/">About</a>
                 </div>
                 <div className="right">
                     <a href="/">Sign in</a>
@@ -30,9 +30,9 @@ const Navbar = () => {
                     </div>
                     <div className={open ? "menu active" : "menu"}>
                         <a href="/">Home</a>
-                        <a href="/">About</a>
+                        <a href="/list">Browse</a>
                         <a href="/">Contacts</a>
-                        <a href="/">Agents</a>
+                        <a href="/">About</a>
                         <a href="/">Sign in</a>
                         <a href="/">Sign up</a>
                     </div>

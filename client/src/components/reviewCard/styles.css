@@ -1,0 +1,38 @@
+.swiper {
+    display: flex;
+    width: 600px;
+    height: auto;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.swiper-slide {
+    font-size: 18px;
+    width: fit-content;
+    /* text-align: center; */
+}
+
+.swiper .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    /* height: 200px; */
+    /* line-height: px; */
+    margin-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 40px;
+}
+
+.swiper .swiper-slide .top {
+    /* background-color: blue; */
+}
+
+.swiper .swiper-slide .bottom {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 300;
+    font-size: 16px;
+    color: rgb(197, 195, 195);
+}

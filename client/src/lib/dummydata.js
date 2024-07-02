@@ -113,14 +113,22 @@ export const singlePostData = {
         "High-quality custom furniture and woodwork by skilled carpenters. We provide bespoke solutions for your home, ensuring each piece fits perfectly with your style and space.",
     reviews: [
         {
-            user: "Jane Smith",
-            rating: 5,
+            id: 1,
+            name: "Jane Smith",
+            rating: 3,
             comment: "Amazing craftsmanship! Highly recommended.",
         },
         {
-            user: "Peter Johnson",
-            rating: 4,
+            id: 2,
+            name: "Peter Johnson",
+            rating: 2,
             comment: "Great service and quality work. Will hire again.",
+        },
+        {
+            id: 3,
+            name: "Michael Jackson",
+            rating: 5,
+            comment: "Great service and quality work. Will hire again.Great service and quality work. Will hire again.Great service and quality work. Will hire again.Great service and quality work. Will hire again.",
         },
     ],
 };
