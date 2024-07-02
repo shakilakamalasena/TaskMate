@@ -6,21 +6,31 @@
 
     @include md {
         flex-direction: column;
+        overflow: scroll;
     }
 
     .details {
         flex: 3;
+        height: 100%;
+        overflow-y: scroll;
 
         @include md {
             flex: none;
             height: max-content;
+            margin-bottom: 50px;
         }
 
         .wrapper {
             padding-right: 50px;
-            overflow-y: scroll;
-            height: 100%;
-            padding-bottom: 50px;
+            // overflow-y: scroll;
+            // height: 100%;
+
+            @include lg {
+                padding-right: 20px;
+            }
+            @include md {
+                padding-right: 0px;
+            }
 
             .info {
                 margin-top: 50px;
@@ -72,6 +82,10 @@
                         background-color: #d0d6ea;
                         font-weight: 600;
 
+                        @include sm {
+                            padding: 20px 50px;
+                        }
+
                         img {
                             width: 50px;
                             height: 50px;
@@ -105,11 +119,21 @@
         height: 100%;
         padding-bottom: 50px;
 
+        @include md {
+            flex: none;
+            height: max-content;
+            margin-bottom: 50px;
+        }
+
         .wrapper {
             padding: 0px 20px;
             display: flex;
             flex-direction: column;
             gap: 20px;
+
+            @include md {
+                padding: 20px;
+            }
 
             img {
                 width: 24px;

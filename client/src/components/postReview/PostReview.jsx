@@ -1,31 +1,27 @@
-import React from "react";
 import "./postReview.scss";
 
 const PostReview = () => {
     return (
         <div className="postReview">
-            <div className="top">
-                <div className="item">
-                    <label htmlFor="city">Comment</label>
-                    <input
-                        type="text"
-                        id="comment"
-                        name="comment"
-                        placeholder="Comment"
-                    />
-                </div>
+            <div className="item">
+                <label htmlFor="city">Comment</label>
+                <textarea
+                    rows={4}
+                    type="text"
+                    id="comment"
+                    name="comment"
+                />
             </div>
-            <div className="bottom">
-                <div className="item">
-                    <label htmlFor="city">Rating</label>
-                    <input
-                        type="number"
-                        min={1}
-                        max={5}
-                        id="rating"
-                        name="rating"
-                    />
-                </div>
+            <div className="item">
+                <label htmlFor="city">Rating</label>
+                <input
+                    type="number"
+                    min={1}
+                    max={5}
+                    id="rating"
+                    name="rating"
+                    placeholder="Rating (E.g. 1-5)"
+                />
                 <button>
                     <img src="/write.png" alt="" />
                 </button>
