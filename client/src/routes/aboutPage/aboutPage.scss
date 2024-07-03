@@ -1,0 +1,100 @@
+@import "../../responsive.scss";
+
+.aboutPage {
+    display: flex;
+    height: 100%;
+
+    @include md {
+        flex-direction: column;
+        overflow: scroll;
+    }
+
+    .textContainer {
+        flex: 3;
+        overflow-y: scroll;
+        height: 100%;
+        margin: 20px 0px;
+
+        @include md {
+            flex: none;
+            height: max-content;
+            margin-bottom: 50px;
+        }
+
+        .wrapper {
+            padding-right: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 50px;
+
+            .heading {
+                display: flex;
+                font-size: 36px;
+                font-weight: bold;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .subHeading {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                cursor: pointer;
+                margin-top: 20px;
+                font-size: 22px;
+                font-weight: 500;
+                background-color: #acbbeb;
+                color: #fff;
+                padding-left: 10px;
+            }
+
+            .plusMark {
+                margin-right: 10px;
+            }
+
+            p {
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0.4;
+                    }
+                    to {
+                        opacity: 1;
+                    }
+                }
+                padding-left: 15px;
+                animation: fadeIn 0.4s ease-out;
+            }
+
+            ul,
+            ol {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                padding-left: 30px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
+        }
+    }
+
+    .imageContainer {
+        flex: 2;
+        background-color: #f3f3fa;
+        position: relative;
+        display: flex;
+        align-items: self-end;
+        width: auto;
+
+        @include md {
+            flex: none;
+            height: max-content;
+            margin-bottom: 50px;
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
