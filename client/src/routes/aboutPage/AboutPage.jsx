@@ -234,7 +234,8 @@ const AboutPage = () => {
                 </div>
             </div>
             <div className="imageContainer">
-                <img src="/fullLogo.png" alt="" />
+                <img src="/logo.png" alt="" />
+                <p>&copy; 2024 TASKMATE. All rights reserved.</p>
             </div>
         </div>
     );

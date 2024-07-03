@@ -1,6 +1,6 @@
 @import "../../responsive.scss";
 
-.aboutPage {
+.contactUs {
     display: flex;
     height: 100%;
 
@@ -34,52 +34,12 @@
                 margin-bottom: 10px;
             }
 
-            .heading {
+            h1 {
                 display: flex;
                 font-size: 36px;
                 font-weight: bold;
                 align-items: center;
                 justify-content: center;
-            }
-
-            .subHeading {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                cursor: pointer;
-                margin-top: 20px;
-                font-size: 22px;
-                font-weight: 500;
-                background-color: #acbbeb;
-                color: #fff;
-                padding-left: 10px;
-            }
-
-            .plusMark {
-                margin-right: 10px;
-            }
-
-            p {
-                @keyframes fadeIn {
-                    from {
-                        opacity: 0.4;
-                    }
-                    to {
-                        opacity: 1;
-                    }
-                }
-                padding-left: 15px;
-                animation: fadeIn 0.4s ease-out;
-            }
-
-            ul,
-            ol {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                padding-left: 30px;
-                padding-top: 15px;
-                padding-bottom: 15px;
             }
         }
     }
@@ -105,7 +65,7 @@
 
         p {
             color: rgb(135, 134, 134);
-            text-shadow: 1px 1px 4px lightgrey
+            text-shadow: 1px 1px 4px lightgrey;
         }
 
         @include md {
@@ -115,6 +75,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 50px;
         }
     }
 }

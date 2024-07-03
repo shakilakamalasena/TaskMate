@@ -6,6 +6,7 @@ import Login from "./routes/login/Login";
 import Layout from "./routes/layouts/Layout";
 import AboutPage from "./routes/aboutPage/AboutPage";
 import ProfilePage from "./routes/profilePage/ProfilePage";
+import ContactUs from "./routes/contactUs/ContactUs";
 
 function App() {
     const router = createBrowserRouter([
@@ -36,6 +37,10 @@ function App() {
                 {
                     path: "/profile",
                     element: <ProfilePage />,
+                },
+                {
+                    path: "/contactus",
+                    element: <ContactUs />,
                 },
             ],
         },
