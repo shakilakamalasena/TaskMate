@@ -82,16 +82,20 @@
     .imageContainer {
         flex: 2;
         background-color: #f3f3fa;
+        width: 20px;
         position: relative;
         display: flex;
         align-items: self-end;
         width: auto;
 
+        img {
+            width: auto;
+        }
+
         @include md {
             flex: none;
             height: max-content;
             margin-bottom: 50px;
-            background-color: aqua;
             display: flex;
             justify-content: center;
             align-items: center;

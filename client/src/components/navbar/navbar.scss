@@ -82,30 +82,35 @@ nav {
                 }
 
                 @include sm {
-                    display: initial;
+                    display: none;
                 }
             }
 
             .profile {
                 padding: 12px 24px;
-                background-color: #fece51;
+                background-color: #1c3988;
+                color: white;
                 cursor: pointer;
                 border: none;
                 position: relative;
 
-                .notification {
-                    position: absolute;
-                    top: -8px;
-                    right: -8px;
-                    background-color: red;
-                    color: white;
-                    border-radius: 50%;
-                    width: 26px;
-                    height: 26px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+                &:hover {
+                    background-color: #6e8ae9;
                 }
+
+                // .notification {
+                //     position: absolute;
+                //     top: -8px;
+                //     right: -8px;
+                //     background-color: red;
+                //     color: white;
+                //     border-radius: 50%;
+                //     width: 26px;
+                //     height: 26px;
+                //     display: flex;
+                //     align-items: center;
+                //     justify-content: center;
+                // }
             }
         }
 
