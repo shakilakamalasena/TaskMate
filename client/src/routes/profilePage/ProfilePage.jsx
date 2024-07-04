@@ -26,12 +26,12 @@ const ProfilePage = () => {
                         <span>
                             E- mail: <b>john@gmail.com</b>
                         </span>
-                    </div>
+                    </div><br /><hr />
                     <div className="title">
                         <h1>My List</h1>
                         <button>Create New Post</button>
                     </div>
-                    <List />
+                    <List /><br /><br /><hr />
                     <div className="title">
                         <h1>Saved List</h1>
                     </div>

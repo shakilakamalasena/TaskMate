@@ -7,6 +7,7 @@ import Layout from "./routes/layouts/Layout";
 import AboutPage from "./routes/aboutPage/AboutPage";
 import ProfilePage from "./routes/profilePage/ProfilePage";
 import ContactUs from "./routes/contactUs/ContactUs";
+import Register from "./routes/register/Register";
 
 function App() {
     const router = createBrowserRouter([
@@ -29,6 +30,10 @@ function App() {
                 {
                     path: "/login",
                     element: <Login />,
+                },
+                {
+                    path: "/register",
+                    element: <Register />,
                 },
                 {
                     path: "/about",

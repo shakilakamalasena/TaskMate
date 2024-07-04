@@ -1,12 +1,12 @@
-import "./login.scss";
-import LoginForm from "../../components/loginForm/LoginForm";
+import RegisterForm from "../../components/registerForm/RegisterForm";
+import "./register.scss";
 
-const Login = () => {
+const Register = () => {
     return (
-        <div className="login">
+        <div className="register">
             <div className="textContainer">
                 <div className="wrapper">
-                    <LoginForm />
+                    <RegisterForm />
                 </div>
             </div>
             <div className="imageContainer">
@@ -17,4 +17,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

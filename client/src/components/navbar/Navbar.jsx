@@ -28,7 +28,9 @@ const Navbar = () => {
                                 alt=""
                             />
                             <span>John Doe</span>
-                            <Link to="/profile" className="profile"><span>Profile</span></Link>
+                            <Link to="/profile" className="profile">
+                                <span>Profile</span>
+                            </Link>
                         </div>
                     ) : (
                         <>
@@ -48,10 +50,10 @@ const Navbar = () => {
                     <div className={open ? "menu active" : "menu"}>
                         <a href="/">Home</a>
                         <a href="/list">Browse</a>
-                        <a href="/">Contacts</a>
-                        <a href="/">About</a>
-                        <a href="/">Sign in</a>
-                        <a href="/">Sign up</a>
+                        <a href="/contactus">Contact Us</a>
+                        <a href="/about">About</a>
+                        <a href="/login">Sign in</a>
+                        <a href="/register">Sign up</a>
                     </div>
                 </div>
             </nav>
