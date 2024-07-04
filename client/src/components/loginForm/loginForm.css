@@ -1,6 +1,6 @@
 .form-container {
     width: 350px;
-    height: 500px;
+    height: auto;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
@@ -11,8 +11,6 @@
 .title {
     text-align: center;
     font-family: "Poppins", sans-serif;
-    /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
     margin: 10px 0 30px 0;
     font-size: 28px;
     font-weight: 500;
@@ -45,9 +43,6 @@
 .page-link-label {
     cursor: pointer;
     font-family: "Poppins", sans-serif;
-
-    /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
     font-size: 9px;
     font-weight: 500;
 }
@@ -59,8 +54,6 @@
 .form-btn {
     padding: 10px 15px;
     font-family: "Poppins", sans-serif;
-    /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
     border-radius: 20px;
     border: 0 !important;
     outline: 0 !important;

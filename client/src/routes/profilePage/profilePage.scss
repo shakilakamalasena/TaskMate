@@ -51,6 +51,21 @@
                     gap: 20px;
                 }
 
+                button {
+                    width: 100px;
+                    background-color: #6e8ae9;
+                    color: #fff;
+                    border: none;
+                    padding: 10px 20px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #8ba1e6;
+                        scale: 1.02;
+                        transition: all 0.2s ease;
+                    }
+                }
+
                 img {
                     width: 40px;
                     height: 40px;

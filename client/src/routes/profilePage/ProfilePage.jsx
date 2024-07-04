@@ -1,9 +1,22 @@
-import React from "react";
+import apiRequest from "../../lib/apiRequest";
 import List from "../../components/list/List";
 import "./profilePage.scss";
 import ComingSoon from "../../components/comingSoon/ComingSoon";
+import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            const res = apiRequest.post("/auth/logout");
+            localStorage.removeItem("user")
+            navigate("/");
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     return (
         <div className="profilePage">
             <div className="details">
@@ -26,12 +39,18 @@ const ProfilePage = () => {
                         <span>
                             E- mail: <b>john@gmail.com</b>
                         </span>
-                    </div><br /><hr />
+                        <button onClick={handleLogout}>Logout</button>
+                    </div>
+                    <br />
+                    <hr />
                     <div className="title">
                         <h1>My List</h1>
                         <button>Create New Post</button>
                     </div>
-                    <List /><br /><br /><hr />
+                    <List />
+                    <br />
+                    <br />
+                    <hr />
                     <div className="title">
                         <h1>Saved List</h1>
                     </div>
@@ -41,7 +60,8 @@ const ProfilePage = () => {
             <div className="chatContainer">
                 <div className="wrapper">
                     <span>Chat Option</span>
-                    <ComingSoon /><br />
+                    <ComingSoon />
+                    <br />
                     <span>Coming Soon...</span>
                 </div>
             </div>

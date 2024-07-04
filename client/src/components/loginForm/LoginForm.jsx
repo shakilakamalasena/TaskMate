@@ -1,26 +1,71 @@
+import { useState } from "react";
 import "./loginForm.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import apiRequest from "../../lib/apiRequest";
 
 const LoginForm = () => {
+    const [error, setError] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsLoading(true);
+        setError("");
+        const formData = new FormData(e.target);
+
+        const username = formData.get("username");
+        const password = formData.get("password");
+
+        try {
+            const res = await apiRequest.post("/auth/login", {
+                username,
+                password,
+            });
+
+            localStorage.setItem("user", JSON.stringify(res.data));
+
+            navigate("/");
+        } catch (err) {
+            setError(err.response.data.message);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
         <div className="form-container">
             <p className="title">Welcome back</p>
-            <form action="" className="form">
-                <input type="email" className="input" placeholder="Email" />
+            <form onSubmit={handleSubmit} className="form">
+                <input
+                    type="text"
+                    className="input"
+                    name="username"
+                    placeholder="Username"
+                    required
+                    minLength={3}
+                    maxLength={20}
+                />
                 <input
                     type="password"
                     className="input"
+                    name="password"
                     placeholder="Password"
+                    required
                 />
                 <p className="page-link">
-                    <span className="page-link-label">Forgot Password?</span>
+                    {/* <span className="page-link-label">Forgot Password?</span> */}
                 </p>
-                <button className="form-btn">Log in</button>
+                <button className="form-btn" disabled={isLoading}>
+                    Log in
+                </button>
+                {error && <span>{error}</span>}
             </form>
             <p className="sign-up-label">
                 Don&apos;t have an account?
                 <Link to="/register" className="sign-up-link">
-                    Sign in
+                    Sign up
                 </Link>
             </p>
             <div className="buttons-container">

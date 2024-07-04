@@ -1,25 +1,83 @@
 import "./registerForm.css";
-import { Link } from "react-router-dom";
+import "./registerForm.scss";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import apiRequest from "../../lib/apiRequest";
 
 const RegisterForm = () => {
+    const [error, setError] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError("");
+
+        setIsLoading(true);
+        const formData = new FormData(e.target);
+
+        const name = formData.get("name");
+        const username = formData.get("username");
+        const email = formData.get("email");
+        const password = formData.get("password");
+
+        try {
+            const res = await apiRequest.post("/auth/register", {
+                name,
+                username,
+                email,
+                password,
+            });
+
+            navigate("/login");
+        } catch (err) {
+            setError(err.response.data.message);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
         <div className="form-container">
             <p className="title">Create Account</p>
-            <form action="" className="form">
-                <input type="text" className="input" placeholder="Name" />
-                <input type="text" className="input" placeholder="Username" />
+            <form onSubmit={handleSubmit} className="form">
+                <input
+                    type="text"
+                    className="input"
+                    name="name"
+                    placeholder="Name"
+                />
+                <input
+                    type="text"
+                    className="input"
+                    name="username"
+                    placeholder="Username"
+                />
 
-                <input type="email" className="input" placeholder="Email" />
+                <input
+                    type="email"
+                    className="input"
+                    name="email"
+                    placeholder="Email"
+                />
                 <input
                     type="password"
                     className="input"
+                    name="password"
                     placeholder="Password"
                 />
-                <button className="form-btn">Create Account</button>
+                <button className="form-btn" disabled={isLoading}>
+                    Create Account
+                </button>
+                {error && <span>{error}</span>}
             </form>
             <p className="sign-up-label">
                 Already have an account?
-                <Link to="/login" className="sign-up-link">Sign in</Link>
+                <Link to="/login" className="sign-up-link">
+                    Sign in
+                </Link>
             </p>
             <div className="buttons-container">
                 <div className="apple-login-button">
