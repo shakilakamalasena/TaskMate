@@ -177,6 +177,7 @@ const AboutPage = () => {
                                 <li>Pasindu Himakara</li>
                                 <li>Harsha Udara</li>
                                 <li>Kavindu Nimesh</li>
+                                <li>Imasha Dilshan</li>
                             </ul>
                             We have combined our diverse skills and knowledge to
                             bring TaskMate to life, and we are proud to present

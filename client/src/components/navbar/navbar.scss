@@ -66,7 +66,7 @@ nav {
         .user {
             display: flex;
             align-items: center;
-            font-weight: bold;
+            font-weight: 600;
 
             img {
                 width: 40px;
@@ -77,9 +77,9 @@ nav {
             }
 
             span {
-                @include md {
-                    display: none;
-                }
+                // @include md {
+                //     display: none;
+                // }
 
                 @include sm {
                     display: none;
@@ -93,29 +93,31 @@ nav {
                 cursor: pointer;
                 border: none;
                 position: relative;
+                font-weight: 400;
 
                 &:hover {
                     background-color: #6e8ae9;
                 }
 
-                // .notification {
-                //     position: absolute;
-                //     top: -8px;
-                //     right: -8px;
-                //     background-color: red;
-                //     color: white;
-                //     border-radius: 50%;
-                //     width: 26px;
-                //     height: 26px;
-                //     display: flex;
-                //     align-items: center;
-                //     justify-content: center;
-                // }
+                .notification {
+                    position: absolute;
+                    top: -8px;
+                    right: -8px;
+                    background-color: red;
+                    color: white;
+                    border-radius: 50%;
+                    width: 26px;
+                    height: 26px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
             }
         }
 
         .register {
             padding: 12px 24px;
+            height: auto;
             background-color: #1c3988;
             cursor: pointer;
             border: none;
@@ -123,6 +125,10 @@ nav {
             color: white;
             &:hover {
                 background-color: #6e8ae9;
+            }
+
+            @include sm {
+                display: none;
             }
         }
 

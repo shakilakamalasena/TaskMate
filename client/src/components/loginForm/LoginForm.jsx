@@ -1,11 +1,14 @@
-import { useState } from "react";
-import "./loginForm.css";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import apiRequest from "../../lib/apiRequest";
+import "./loginForm.scss";
+import { AuthContext } from "../../context/AuthContext";
 
 const LoginForm = () => {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+
+    const { updateUser } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -24,7 +27,7 @@ const LoginForm = () => {
                 password,
             });
 
-            localStorage.setItem("user", JSON.stringify(res.data));
+            updateUser(res.data);
 
             navigate("/");
         } catch (err) {
@@ -35,7 +38,7 @@ const LoginForm = () => {
     };
 
     return (
-        <div className="form-container">
+        <div className="login-form-container">
             <p className="title">Welcome back</p>
             <form onSubmit={handleSubmit} className="form">
                 <input
@@ -73,7 +76,7 @@ const LoginForm = () => {
                     <svg
                         stroke="currentColor"
                         fill="currentColor"
-                        stroke-width="0"
+                        // stroke-width="0"
                         className="apple-icon"
                         viewBox="0 0 1024 1024"
                         height="1em"
@@ -88,7 +91,7 @@ const LoginForm = () => {
                     <svg
                         stroke="currentColor"
                         fill="currentColor"
-                        stroke-width="0"
+                        // stroke-width="0"
                         version="1.1"
                         x="0px"
                         y="0px"

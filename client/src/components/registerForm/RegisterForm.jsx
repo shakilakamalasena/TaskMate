@@ -1,7 +1,6 @@
-import "./registerForm.css";
+// import "./registerForm.css";
 import "./registerForm.scss";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useState } from "react";
 import apiRequest from "../../lib/apiRequest";
 
@@ -40,7 +39,7 @@ const RegisterForm = () => {
     };
 
     return (
-        <div className="form-container">
+        <div className="register-form-container">
             <p className="title">Create Account</p>
             <form onSubmit={handleSubmit} className="form">
                 <input
@@ -84,7 +83,7 @@ const RegisterForm = () => {
                     <svg
                         stroke="currentColor"
                         fill="currentColor"
-                        stroke-width="0"
+                        // stroke-width="0"
                         className="apple-icon"
                         viewBox="0 0 1024 1024"
                         height="1em"
@@ -99,7 +98,7 @@ const RegisterForm = () => {
                     <svg
                         stroke="currentColor"
                         fill="currentColor"
-                        stroke-width="0"
+                        // stroke-width="0"
                         version="1.1"
                         x="0px"
                         y="0px"
