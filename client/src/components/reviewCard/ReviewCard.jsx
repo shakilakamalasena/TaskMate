@@ -4,8 +4,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/autoplay";
 
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 import "./styles.css";
 
@@ -26,7 +27,12 @@ const ReviewCard = ({ reviews }) => {
                 pagination={{
                     clickable: true,
                 }}
-                modules={[Navigation, Pagination]}
+                autoplay={{
+                    // Configure autoplay here
+                    delay: 2500, // Delay between transitions (in ms). Adjust as needed.
+                    pauseOnMouseEnter: true,
+                }}
+                modules={[Navigation, Pagination, Autoplay]}
                 className="mySwiper"
             >
                 {reviews
