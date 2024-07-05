@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ListPage from "./routes/listPage/ListPage";
 import SinglePage from "./routes/singlePage/SinglePage";
 import Login from "./routes/login/Login";
-import Layout from "./routes/layouts/Layout";
+import { Layout, RequireAuth } from "./routes/layouts/Layout";
 import AboutPage from "./routes/aboutPage/AboutPage";
 import ProfilePage from "./routes/profilePage/ProfilePage";
 import ContactUs from "./routes/contactUs/ContactUs";
@@ -39,13 +39,20 @@ function App() {
                     path: "/about",
                     element: <AboutPage />,
                 },
-                {
-                    path: "/profile",
-                    element: <ProfilePage />,
-                },
+
                 {
                     path: "/contactus",
                     element: <ContactUs />,
+                },
+            ],
+        },
+        {
+            path: "/",
+            element: <RequireAuth />,
+            children: [
+                {
+                    path: "/profile",
+                    element: <ProfilePage />,
                 },
             ],
         },
