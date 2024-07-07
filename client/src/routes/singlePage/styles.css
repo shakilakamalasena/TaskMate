@@ -1,6 +1,6 @@
 .swiper {
     display: flex;
-    width: 600px;
+    width: auto;
     height: auto;
     border: 1px solid black;
     border-radius: 10px;
@@ -9,7 +9,6 @@
 .swiper-slide {
     font-size: 18px;
     width: fit-content;
-    /* text-align: center; */
 }
 
 .swiper .swiper-slide {
@@ -17,16 +16,14 @@
     flex-direction: column;
     height: auto;
     width: auto;
-    /* height: 200px; */
-    /* line-height: px; */
     margin-top: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-bottom: 40px;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 35px;
 }
 
 .swiper .swiper-slide .top {
-    /* background-color: blue; */
+    padding: 15px 0px 0px 0px;
 }
 
 .swiper .swiper-slide .bottom {

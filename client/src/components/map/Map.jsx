@@ -46,7 +46,11 @@ const Map = ({ items }) => {
         <div className="map">
             <MapContainer
                 // center={[position.clatitude, position.clongitude]}
-                center={[52.4797, -1.90269]}
+                center={
+                    items.length === 1
+                        ? [items[0].latitude, items[0].longitude]
+                        : [52.4797, -1.90269]
+                }
                 zoom={6}
                 scrollWheelZoom={false}
                 className="map"

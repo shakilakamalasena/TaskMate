@@ -52,29 +52,22 @@
             }
         }
 
-        button {
-            border: none;
-            cursor: pointer;
+        .searchButton {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background-color: #1c3988;
-            width: 64px;
-            &:hover {
-                transition: all 0.4s ease-in;
-                background-color: #6e8ae9;
-            }
+            width: 60px;
 
             @include sm {
                 width: auto;
-                padding: 15px;
+                padding: 10px 0px;
             }
 
-            img {
-                width: 24px;
-                height: 24px;
-
-                &:hover {
-                    transition: all 0.1s ease-in;
-                    scale: 1.3;
-                }
+            &:hover {
+                background-color: #6e8ae9;
+                scale: 1.04;
+                transition: all 0.2s ease;
             }
         }
     }

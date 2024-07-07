@@ -1,11 +1,31 @@
-import React from "react";
+import { useState } from "react";
 import "./filter.scss";
+import { useSearchParams } from "react-router-dom";
 
 const Filter = () => {
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [query, setQuery] = useState({
+        serviceType: searchParams.get("serviceType") || "",
+        city: searchParams.get("city") || "",
+        minPrice: searchParams.get("minPrice") || 0,
+        maxPrice: searchParams.get("maxPrice") || 10000000,
+    });
+
+    const handleChange = (e) => {
+        setQuery({
+            ...query,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleFilter = () => {
+        setSearchParams(query);
+    };
+
     return (
         <div className="filter">
             <h1>
-                Search results for <b>London</b>
+                Search results for <b>{searchParams.get("city")}</b>
             </h1>
             <div className="top">
                 <div className="item">
@@ -15,36 +35,35 @@ const Filter = () => {
                         id="city"
                         name="city"
                         placeholder="City Location"
+                        onChange={handleChange}
+                        defaultValue={query.city}
                     />
                 </div>
             </div>
             <div className="bottom">
                 <div className="item">
                     <label htmlFor="type">Type</label>
-                    <select name="type" id="type">
+                    <select
+                        name="serviceType"
+                        id="serviceType"
+                        onChange={handleChange}
+                        defaultValue={query.serviceType}
+                    >
                         <option value="">any</option>
-                        <option value="carpentry">Carpentry</option>
-                        <option value="plumbing">Plumbing</option>
-                        <option value="electrical">Electrical</option>
-                        <option value="painting">Painting</option>
-                        <option value="gardening">Gardening</option>
-                        <option value="cleaning">Cleaning</option>
-                        <option value="handyman">Handyman</option>
-                        <option value="hvac">HVAC</option>
-                        <option value="locksmith">Locksmith</option>
-                        <option value="renovation">Renovation</option>
-                        <option value="roofing">Roofing</option>
-                        <option value="landscaping">Landscaping</option>
+                        <option value="Carpentry">Carpentry</option>
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Painting">Painting</option>
+                        <option value="Gardening">Gardening</option>
+                        <option value="Cleaning">Cleaning</option>
+                        <option value="Handyman">Handyman</option>
+                        <option value="HVAC">HVAC</option>
+                        <option value="Locksmith">Locksmith</option>
+                        <option value="Renovation">Renovation</option>
+                        <option value="Roofing">Roofing</option>
+                        <option value="Landscaping">Landscaping</option>
                     </select>
                 </div>
-                {/* <div className="item">
-                    <label htmlFor="property">Property</label>
-                    <select name="property" id="property">
-                        <option value="">any</option>
-                        <option value="apartment">Apartment</option>
-                        <option value="house">House</option>
-                    </select>
-                </div> */}
                 <div className="item">
                     <label htmlFor="minPrice">Min Price</label>
                     <input
@@ -52,6 +71,7 @@ const Filter = () => {
                         id="minPrice"
                         name="minPrice"
                         placeholder="any"
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="item">
@@ -61,18 +81,10 @@ const Filter = () => {
                         id="maxPrice"
                         name="maxPrice"
                         placeholder="any"
+                        onChange={handleChange}
                     />
                 </div>
-                {/* <div className="item">
-                    <label htmlFor="bedroom">Bedroom</label>
-                    <input
-                        type="number"
-                        id="bedroom"
-                        name="bedroom"
-                        placeholder="any"
-                    />
-                </div> */}
-                <button>
+                <button onClick={handleFilter}>
                     <img src="/search.png" alt="" />
                 </button>
             </div>

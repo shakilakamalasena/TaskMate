@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -9,8 +9,28 @@ import "swiper/css/autoplay";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 import "./styles.css";
+import apiRequest from "../../lib/apiRequest";
+import { useLoaderData } from "react-router-dom";
 
-const ReviewCard = ({ reviews }) => {
+const ReviewCard = ({ postId }) => {
+    const review = useLoaderData();
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+        const fetchReviews = async () => {
+            try {
+                const response = await apiRequest.get(
+                    `/posts/${postId}/reviews`
+                );
+                setReviews(response.data);
+            } catch (error) {
+                console.error("Failed to fetch reviews:", error);
+            }
+        };
+
+        fetchReviews();
+    }, [postId]);
+
     const generateStars = (rating) => {
         const filledStars = "★".repeat(rating);
         const emptyStars = "☆".repeat(5 - rating);
@@ -28,8 +48,7 @@ const ReviewCard = ({ reviews }) => {
                     clickable: true,
                 }}
                 autoplay={{
-                    // Configure autoplay here
-                    delay: 2500, // Delay between transitions (in ms). Adjust as needed.
+                    delay: 2500,
                     pauseOnMouseEnter: true,
                 }}
                 modules={[Navigation, Pagination, Autoplay]}

@@ -1,8 +1,60 @@
+import { useState } from "react";
 import "./postReview.scss";
+import apiRequest from "../../lib/apiRequest";
 
-const PostReview = () => {
+const PostReview = ({ postId }) => {
+    const [review, setReview] = useState({
+        name: "",
+        comment: "",
+        rating: "",
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setReview((prevReview) => ({
+            ...prevReview,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const reviewData = {
+            ...review,
+            rating: parseInt(review.rating),
+        };
+        try {
+            const response = await apiRequest.post(
+                `/posts/${postId}/review`,
+                reviewData
+            );
+            if (response.status === 201) {
+                setReview({
+                    name: "",
+                    comment: "",
+                    rating: "",
+                });
+                window.location.reload();
+            }
+        } catch (error) {
+            // Handle error (e.g., show error message)
+            console.error("Failed to post review:", error);
+        }
+    };
+
     return (
-        <div className="postReview">
+        <form className="postReview" onSubmit={handleSubmit}>
+            <div className="item">
+                <label htmlFor="name">Name</label>
+                <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    value={review.name}
+                    onChange={handleChange}
+                    required
+                />
+            </div>
             <div className="item">
                 <label htmlFor="city">Comment</label>
                 <textarea
@@ -10,6 +62,9 @@ const PostReview = () => {
                     type="text"
                     id="comment"
                     name="comment"
+                    value={review.comment}
+                    onChange={handleChange}
+                    required
                 />
             </div>
             <div className="item">
@@ -21,12 +76,15 @@ const PostReview = () => {
                     id="rating"
                     name="rating"
                     placeholder="Rating (E.g. 1-5)"
+                    value={review.rating}
+                    onChange={handleChange}
+                    required
                 />
                 <button>
                     <img src="/write.png" alt="" />
                 </button>
             </div>
-        </div>
+        </form>
     );
 };
 

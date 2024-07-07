@@ -2,14 +2,23 @@ import apiRequest from "../../lib/apiRequest";
 import List from "../../components/list/List";
 import "./profilePage.scss";
 import ComingSoon from "../../components/comingSoon/ComingSoon";
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { Await, Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Suspense, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 const ProfilePage = () => {
+    const data = useLoaderData();
+
     const { updateUser, currentUser } = useContext(AuthContext);
 
     const navigate = useNavigate();
+
+    // FILTER THE POSTS ADDED BY CURRENT USER
+    const userPosts = data.postResponse.postPromise.data.userPosts.filter(
+        (post) => post.userId === currentUser.id
+    );
+
+    const savedByUserIds = data.postResponse.savedPostsPromise.data;
 
     const handleLogout = async () => {
         try {
@@ -27,7 +36,9 @@ const ProfilePage = () => {
                 <div className="wrapper">
                     <div className="title">
                         <h1>User Information</h1>
-                        <button>Update Profile</button>
+                        <Link to="/profile/update">
+                            <button>Update Profile</button>
+                        </Link>
                     </div>
                     <div className="info">
                         <span>
@@ -47,14 +58,34 @@ const ProfilePage = () => {
                     </div>
                     <div className="title">
                         <h1>My List</h1>
-                        <button>Create New Post</button>
+                        <Link to="/add">
+                            <button>Create New Post</button>
+                        </Link>
                     </div>
-                    <List />
+
+                    <Suspense fallback={<p>Loading...</p>}>
+                        <Await
+                            // resolve={data.postResponse}
+                            resolve={userPosts}
+                            errorElement={<p>Error loading posts!</p>}
+                        >
+                            {(userPosts) => <List posts={userPosts} />}
+                        </Await>
+                    </Suspense>
 
                     <div className="title">
                         <h1>Saved List</h1>
                     </div>
-                    <List />
+                    <Suspense fallback={<p>Loading...</p>}>
+                        <Await
+                            resolve={savedByUserIds}
+                            errorElement={<p>Error loading posts!</p>}
+                        >
+                            {(savedByUserIds) => (
+                                <List posts={savedByUserIds} />
+                            )}
+                        </Await>
+                    </Suspense>
                 </div>
             </div>
             <div className="chatContainer">

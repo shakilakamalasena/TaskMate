@@ -47,12 +47,14 @@ const RegisterForm = () => {
                     className="input"
                     name="name"
                     placeholder="Name"
+                    required
                 />
                 <input
                     type="text"
                     className="input"
                     name="username"
                     placeholder="Username"
+                    required
                 />
 
                 <input
@@ -60,12 +62,14 @@ const RegisterForm = () => {
                     className="input"
                     name="email"
                     placeholder="Email"
+                    required
                 />
                 <input
                     type="password"
                     className="input"
                     name="password"
                     placeholder="Password"
+                    required
                 />
                 <button className="form-btn" disabled={isLoading}>
                     Create Account
