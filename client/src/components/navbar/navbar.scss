@@ -164,6 +164,13 @@ nav {
 
             &.active {
                 right: 0;
+
+                a {
+                    // background-color: #f3f3fa;
+                    .profileSide {
+                        background-color: #f3f3fa;
+                    }
+                }
             }
 
             @include sm {

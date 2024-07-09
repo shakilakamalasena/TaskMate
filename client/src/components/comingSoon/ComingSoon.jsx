@@ -1,14 +1,7 @@
-import React from "react";
 import "./comingSoon.css";
 
 const ComingSoon = () => {
     return (
-        // <div className="loader">
-        //     <span>&lt;</span>
-        //     <span>COMING SOON...</span>
-        //     <span>/&gt;</span>
-        // </div>
-
         <div className="loader">
             <div className="truckWrapper">
                 <div className="truckBody">

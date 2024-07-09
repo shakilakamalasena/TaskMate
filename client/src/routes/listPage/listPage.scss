@@ -16,6 +16,10 @@
             gap: 50px;
             overflow-y: scroll;
             padding-bottom: 50px;
+
+            @include md {
+                padding-right: 0px;
+            }
         }
     }
 

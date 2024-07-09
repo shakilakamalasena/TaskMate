@@ -53,8 +53,31 @@ const Navbar = () => {
                         <a href="/list">Browse</a>
                         <a href="/contactus">Contact Us</a>
                         <a href="/about">About</a>
-                        <a href="/login">Sign in</a>
-                        <a href="/register">Sign up</a>
+                        {currentUser ? (
+                            <Link
+                                to="/profile"
+                                style={{
+                                    backgroundColor: "#1c3988",
+                                    marginTop: "70px",
+                                }}
+                            >
+                                Profile
+                            </Link>
+                        ) : (
+                            <>
+                                <div
+                                    style={{
+                                        backgroundColor: "#1c3988",
+                                        marginTop: "70px",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                    }}
+                                >
+                                    <a href="/login">Sign in</a>
+                                    <a href="/register">Sign up</a>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
             </nav>

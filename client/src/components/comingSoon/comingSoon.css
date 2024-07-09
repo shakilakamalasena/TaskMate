@@ -16,6 +16,7 @@
   justify-content: flex-end;
   overflow-x: hidden;
 }
+
 /* truck upper body */
 .truckBody {
   width: 130px;
@@ -23,18 +24,22 @@
   margin-bottom: 6px;
   animation: motion 1s linear infinite;
 }
+
 /* truck suspension animation*/
 @keyframes motion {
   0% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(3px);
   }
+
   100% {
     transform: translateY(0px);
   }
 }
+
 /* truck's tires */
 .truckTires {
   width: 130px;
@@ -46,6 +51,7 @@
   position: absolute;
   bottom: 0;
 }
+
 .truckTires svg {
   width: 24px;
 }
@@ -59,6 +65,7 @@
   align-self: flex-end;
   border-radius: 3px;
 }
+
 .road::before {
   content: "";
   position: absolute;
@@ -70,6 +77,7 @@
   animation: roadAnimation 1.4s linear infinite;
   border-left: 10px solid white;
 }
+
 .road::after {
   content: "";
   position: absolute;
@@ -94,6 +102,7 @@
   0% {
     transform: translateX(0px);
   }
+
   100% {
     transform: translateX(-350px);
   }

@@ -24,6 +24,10 @@
             margin-bottom: 50px;
             overflow-y: scroll;
             height: 100%;
+
+            @include md {
+                padding-right: 0px;
+            }
         }
     }
 

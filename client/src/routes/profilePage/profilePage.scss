@@ -25,6 +25,10 @@
             flex-direction: column;
             gap: 50px;
 
+            @include md {
+                padding-right: 0px;
+            }
+
             .title {
                 display: flex;
                 align-items: center;
