@@ -22,6 +22,12 @@ const Filter = () => {
         setSearchParams(query);
     };
 
+    const handleKeyPress = (e) => {
+        if (e.key == "Enter") {
+            handleFilter();
+        }
+    };
+
     return (
         <div className="filter">
             <h1>
@@ -37,6 +43,7 @@ const Filter = () => {
                         placeholder="City Location"
                         onChange={handleChange}
                         defaultValue={query.city}
+                        onKeyDown={handleKeyPress}
                     />
                 </div>
             </div>
@@ -48,6 +55,7 @@ const Filter = () => {
                         id="serviceType"
                         onChange={handleChange}
                         defaultValue={query.serviceType}
+                        onKeyDown={handleKeyPress}
                     >
                         <option value="">any</option>
                         <option value="Carpentry">Carpentry</option>
@@ -72,6 +80,7 @@ const Filter = () => {
                         name="minPrice"
                         placeholder="any"
                         onChange={handleChange}
+                        onKeyDown={handleKeyPress}
                     />
                 </div>
                 <div className="item">
@@ -82,6 +91,7 @@ const Filter = () => {
                         name="maxPrice"
                         placeholder="any"
                         onChange={handleChange}
+                        onKeyDown={handleKeyPress}
                     />
                 </div>
                 <button onClick={handleFilter}>

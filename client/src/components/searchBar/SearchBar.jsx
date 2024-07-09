@@ -40,7 +40,6 @@ const SearchBar = () => {
                     placeholder="City Location"
                     onChange={handleChange}
                 />
-
                 <Link
                     to={`/list?serviceType=${query.serviceType}&city=${query.city}`}
                     className="searchButton"
