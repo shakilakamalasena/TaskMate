@@ -1,4 +1,3 @@
-// import "./registerForm.css";
 import "./registerForm.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -38,10 +37,20 @@ const RegisterForm = () => {
         }
     };
 
+    const handleKeyPress = (e) => {
+        if (e.key == "Enter") {
+            handleSubmit();
+        }
+    };
+
     return (
         <div className="register-form-container">
             <p className="title">Create Account</p>
-            <form onSubmit={handleSubmit} className="form">
+            <form
+                onSubmit={handleSubmit}
+                className="form"
+                onKeyDown={handleKeyPress}
+            >
                 <input
                     type="text"
                     className="input"

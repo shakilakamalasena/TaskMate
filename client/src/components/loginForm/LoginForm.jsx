@@ -37,10 +37,20 @@ const LoginForm = () => {
         }
     };
 
+    const handleKeyPress = (e) => {
+        if (e.key == "Enter") {
+            handleSubmit();
+        }
+    };
+
     return (
         <div className="login-form-container">
             <p className="title">Welcome back</p>
-            <form onSubmit={handleSubmit} className="form">
+            <form
+                onSubmit={handleSubmit}
+                className="form"
+                onKeyDown={handleKeyPress}
+            >
                 <input
                     type="text"
                     className="input"

@@ -2,7 +2,6 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import "./map.scss";
 import "leaflet/dist/leaflet.css";
 import Pin from "../pin/Pin";
-import { useEffect, useState } from "react";
 
 const Map = ({ items }) => {
     // const [position, setPosition] = useState({
