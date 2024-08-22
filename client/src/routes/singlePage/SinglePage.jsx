@@ -68,7 +68,7 @@ const SinglePage = () => {
                                     <span>{post.address}</span>
                                 </div>
 
-                                <div className="price">$ {post.price} /hr</div>
+                                <div className="price">Rs. {post.price} /hr</div>
                             </div>
                             <div className="user">
                                 <img src={post.user.avatar || "/noavatar.jpg"} alt="" />
