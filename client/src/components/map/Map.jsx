@@ -4,6 +4,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import Pin from "../pin/Pin";
 import { useEffect, useState } from "react";
+import Loader from "../loader/Loader";
 
 // Custom red icon
 const redIcon = new L.Icon({
@@ -51,7 +52,7 @@ const Map = ({ items }) => {
     }, []);
 
     if (!positionLoaded) {
-        return <div>Loading map...</div>;
+        return <div className="maploader"><Loader /></div>;
     }
 
     return (
