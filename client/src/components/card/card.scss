@@ -30,15 +30,53 @@
             height: 16px;
         }
 
-        .title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #444;
-            transition: all 0.4s ease;
+        // .title {
+        //     font-size: 20px;
+        //     font-weight: 600;
+        //     color: #444;
+        //     transition: all 0.4s ease;
 
-            &:hover {
-                color: #000;
-                scale: 1.01;
+        //     &:hover {
+        //         color: #000;
+        //         scale: 1.01;
+        //     }
+        // }
+
+        .heading {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .title {
+                font-size: 20px;
+                font-weight: 600;
+                color: #444;
+                transition: all 0.4s ease;
+
+                &:hover {
+                    color: #000;
+                    scale: 1.01;
+                }
+            }
+
+            .deletebtn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .deleteicon {
+                    border: 1px solid #999;
+                    padding: 5px 5px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:hover {
+                        background-color: lightgray;
+                    }
+                }
             }
         }
 

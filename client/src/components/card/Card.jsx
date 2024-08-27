@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
 
-const Card = ({ item }) => {
+const Card = ({ item, showDeleteButton, handleDelete }) => {
     const [saved, setSaved] = useState(item.isSaved);
     const { currentUser } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -30,9 +30,28 @@ const Card = ({ item }) => {
                 <img src={item.images[0]} alt="" />
             </Link>
             <div className="textContainer">
-                <h2 className="title">
+                {/* <h2 className="title">
                     <Link to={`/${item.id}`}>{item.title}</Link>
-                </h2>
+                </h2> */}
+
+                {/* ============== New =============== */}
+                <div className="heading">
+                    <h2 className="title">
+                        <Link to={`/${item.id}`}>{item.title}</Link>
+                    </h2>
+                    <div className="deletebtn">
+                        {showDeleteButton && (
+                            <div
+                                className="deleteicon"
+                                onClick={() => handleDelete(item.id)}
+                            >
+                                <img src="/delete.png" alt="Delete" />
+                            </div>
+                        )}
+                    </div>
+                </div>
+                {/* ============== New =============== */}
+
                 <p className="address">
                     <img src="/pin.png" alt="" />
                     <span>{item.address}</span>

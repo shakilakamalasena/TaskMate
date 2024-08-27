@@ -30,6 +30,14 @@ const ProfilePage = () => {
         }
     };
 
+    const handleDelete = async () => {
+        try {
+            console.log("Delete button clicked...");
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <div className="profilePage">
             <div className="details">
@@ -69,7 +77,13 @@ const ProfilePage = () => {
                             resolve={userPosts}
                             errorElement={<p>Error loading posts!</p>}
                         >
-                            {(userPosts) => <List posts={userPosts} />}
+                            {(userPosts) => (
+                                <List
+                                    posts={userPosts}
+                                    showDeleteButton={true}
+                                    handleDelete={handleDelete}
+                                />
+                            )}
                         </Await>
                     </Suspense>
 
