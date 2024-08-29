@@ -68,10 +68,15 @@ const SinglePage = () => {
                                     <span>{post.address}</span>
                                 </div>
 
-                                <div className="price">Rs. {post.price} /hr</div>
+                                <div className="price">
+                                    Rs. {post.price} /hr
+                                </div>
                             </div>
                             <div className="user">
-                                <img src={post.user.avatar || "/noavatar.jpg"} alt="" />
+                                <img
+                                    src={post.user.avatar || "/noavatar.jpg"}
+                                    alt=""
+                                />
                                 <span>{post.user.name}</span>
                             </div>
                         </div>
@@ -123,7 +128,7 @@ const SinglePage = () => {
                                         ))}
                                 </Swiper>
                             </div>
-                            
+
                             <hr />
                             <h1>Post a Review?</h1>
                             <div className="review">

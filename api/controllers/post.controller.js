@@ -109,6 +109,30 @@ export const updatePost = async (req, res) => {
     }
 };
 
+// export const deletePost = async (req, res) => {
+//     const id = req.params.id;
+//     const tokenUserId = req.userId;
+
+//     try {
+//         const post = await prisma.post.findUnique({
+//             where: { id },
+//         });
+
+//         if (post.userId !== tokenUserId) {
+//             return res.status(403).json({ message: "Not Authorized!" });
+//         }
+
+//         await prisma.post.delete({
+//             where: { id },
+//         });
+
+//         res.status(200).json({ message: "Post deleted" });
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).json({ message: "Failed to delete post" });
+//     }
+// };
+
 export const deletePost = async (req, res) => {
     const id = req.params.id;
     const tokenUserId = req.userId;
@@ -116,12 +140,32 @@ export const deletePost = async (req, res) => {
     try {
         const post = await prisma.post.findUnique({
             where: { id },
+            include: { postDetail: true, reviews: true },
         });
+
+        if (!post) {
+            return res.status(404).json({ message: "Post not found" });
+        }
 
         if (post.userId !== tokenUserId) {
             return res.status(403).json({ message: "Not Authorized!" });
         }
 
+        // 01. Delete the related reviews
+        if (post.reviews && post.reviews.length > 0) {
+            await prisma.review.deleteMany({
+                where: { postId: id },
+            });
+        }
+
+        // 02. Delete the related PostDetail
+        if (post.postDetail) {
+            await prisma.postDetail.delete({
+                where: { id: post.postDetail.id },
+            });
+        }
+
+        // 03. Then delete the Post
         await prisma.post.delete({
             where: { id },
         });

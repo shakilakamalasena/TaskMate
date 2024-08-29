@@ -8,7 +8,7 @@ import Loader from "../loader/Loader";
 
 // Custom red icon
 const redIcon = new L.Icon({
-    iconUrl: "../../../public/red-pin.png",
+    iconUrl: "../../../red-pin.png",
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],

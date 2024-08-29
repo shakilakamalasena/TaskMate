@@ -24,6 +24,8 @@ const Card = ({ item, showDeleteButton, handleDelete }) => {
         }
     };
 
+    showDeleteButton = true;
+
     return (
         <div className="card">
             <Link to={`/${item.id}`} className="imageContainer">
