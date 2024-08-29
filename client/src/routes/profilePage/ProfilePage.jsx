@@ -81,7 +81,6 @@ const ProfilePage = () => {
                                 <List
                                     posts={userPosts}
                                     showDeleteButton={true}
-                                    handleDelete={handleDelete}
                                 />
                             )}
                         </Await>

@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
 
-const Card = ({ item, showDeleteButton, handleDelete }) => {
+const Card = ({ item, showDeleteButton }) => {
     const [saved, setSaved] = useState(item.isSaved);
     const { currentUser } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -24,7 +24,15 @@ const Card = ({ item, showDeleteButton, handleDelete }) => {
         }
     };
 
-    showDeleteButton = true;
+    const handleDelete = async () => {
+        try {
+            await apiRequest.delete(`/posts/${item.id}`);
+            // Optionally, you can add logic to remove the deleted post from the UI
+            navigate("/profile");
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <div className="card">
@@ -41,7 +49,7 @@ const Card = ({ item, showDeleteButton, handleDelete }) => {
                     <h2 className="title">
                         <Link to={`/${item.id}`}>{item.title}</Link>
                     </h2>
-                    <div className="deletebtn">
+                    <div className="deletebtn" onClick={handleDelete}>
                         {showDeleteButton && (
                             <div
                                 className="deleteicon"

@@ -1,7 +1,7 @@
 import "./list.scss";
 import Card from "../card/Card.jsx";
 
-const List = ({ posts, showDeleteButton, handleDelete }) => {
+const List = ({ posts, showDeleteButton }) => {
     return (
         <div className="list">
             {posts.map((item) => (
@@ -9,7 +9,6 @@ const List = ({ posts, showDeleteButton, handleDelete }) => {
                     key={item.id}
                     item={item}
                     showDeleteButton={showDeleteButton}
-                    handleDelete={handleDelete}
                 />
             ))}
         </div>
