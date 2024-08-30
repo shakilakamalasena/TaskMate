@@ -1,8 +1,12 @@
 import { useState } from "react";
 import "./postReview.scss";
 import apiRequest from "../../lib/apiRequest";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const PostReview = ({ postId }) => {
+    const navigate = useNavigate();
+
     const [review, setReview] = useState({
         name: "",
         comment: "",
@@ -34,7 +38,13 @@ const PostReview = ({ postId }) => {
                     comment: "",
                     rating: "",
                 });
-                window.location.reload();
+                navigate(`/${postId}`);
+                Swal.fire({
+                    icon: "success",
+                    title: "Post added successfully",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
             }
         } catch (error) {
             // Handle error (e.g., show error message)

@@ -3,6 +3,7 @@ import "./card.scss";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
+import Swal from "sweetalert2";
 
 const Card = ({ item, showDeleteButton }) => {
     const [saved, setSaved] = useState(item.isSaved);
@@ -25,11 +26,32 @@ const Card = ({ item, showDeleteButton }) => {
     };
 
     const handleDelete = async () => {
+        const result = await Swal.fire({
+            title: "Are you sure?",
+            text: `Do you really want to delete the post "${item.title}"?`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, keep it",
+        });
+
+        if (!result.isConfirmed) return;
+
         try {
             await apiRequest.delete(`/posts/${item.id}`);
-            // Optionally, you can add logic to remove the deleted post from the UI
             navigate("/profile");
+            Swal.fire({
+                icon: "success",
+                title: "Post deleted successfully",
+                showConfirmButton: false,
+                timer: 1500,
+            });
         } catch (error) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+            });
             console.log(error);
         }
     };

@@ -5,6 +5,7 @@ import "react-quill/dist/quill.snow.css";
 import apiRequest from "../../lib/apiRequest";
 import UploadWidget from "../../components/uploadWidget/UploadWidget";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const NewPostPage = () => {
     const [value, setValue] = useState("");
@@ -19,6 +20,17 @@ const NewPostPage = () => {
         const inputs = Object.fromEntries(formData);
 
         try {
+            const result = await Swal.fire({
+                title: "Are you sure?",
+                text: "Do you really want to add the post?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonText: "Yes, post it!",
+                cancelButtonText: "No",
+            });
+
+            if (!result.isConfirmed) return;
+
             const res = await apiRequest.post("/posts", {
                 postData: {
                     title: inputs.title,
@@ -40,6 +52,13 @@ const NewPostPage = () => {
             });
 
             navigate("/" + res.data.id);
+
+            Swal.fire({
+                icon: "success",
+                title: "Post added successfully",
+                showConfirmButton: false,
+                timer: 1500,
+            });
         } catch (err) {
             console.log(err);
             setError(error);
@@ -76,7 +95,12 @@ const NewPostPage = () => {
                         </div>
                         <div className="item">
                             <label htmlFor="price">Price</label>
-                            <input id="price" name="price" type="number" min={1} />
+                            <input
+                                id="price"
+                                name="price"
+                                type="number"
+                                min={1}
+                            />
                         </div>
                         <div className="item description">
                             <label htmlFor="desc">Description</label>
