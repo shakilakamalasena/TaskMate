@@ -50,8 +50,10 @@ const LoginForm = () => {
         const password = user.uid;
         const avatar = user.photoURL;
 
+        let res;
+        
         try {
-            const res = await apiRequest.post("/auth/login", {
+            res = await apiRequest.post("/auth/login", {
                 username,
                 password,
             });
@@ -61,7 +63,6 @@ const LoginForm = () => {
             navigate("/");
         } catch (err) {
             if (err.response && err.response.status == 401) {
-                let res;
                 res = await apiRequest.post("/auth/register", {
                     name,
                     username,

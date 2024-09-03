@@ -14,18 +14,19 @@ const RegisterForm = () => {
     const { currentUser, updateUser } = useContext(AuthContext);
 
     const handleGoogleLogin = async () => {
+        setIsLoading(true);
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+
+        const name = user.displayName;
+        const email = user.email;
+        const username = email.split("@")[0];
+        const password = user.uid;
+        const avatar = user.photoURL;
+
+        let res;
+
         try {
-            setIsLoading(true);
-            const result = await signInWithPopup(auth, provider);
-            const user = result.user;
-
-            const name = user.displayName;
-            const email = user.email;
-            const username = email.split("@")[0];
-            const password = user.uid;
-            const avatar = user.photoURL;
-
-            let res;
             res = await apiRequest.post("/auth/register", {
                 name,
                 username,
@@ -47,7 +48,18 @@ const RegisterForm = () => {
 
             updateUser(res.data);
         } catch (err) {
-            setError(err.message);
+            if (err.response && err.response.status == 500) {
+                res = await apiRequest.post("/auth/login", {
+                    username,
+                    password,
+                });
+
+                updateUser(res.data);
+
+                navigate("/");
+            } else {
+                setError(err.message);
+            }
         } finally {
             setIsLoading(false);
         }
