@@ -1,13 +1,63 @@
 import "./registerForm.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import apiRequest from "../../lib/apiRequest";
+import { auth, provider, signInWithPopup } from "../../lib/firebase";
+import { AuthContext } from "../../context/AuthContext";
 
 const RegisterForm = () => {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
+
+    const { currentUser, updateUser } = useContext(AuthContext);
+
+    const handleGoogleLogin = async () => {
+        try {
+            setIsLoading(true);
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+
+            const randomPassword = Math.random().toString(36).slice(-8);
+            console.log("random pwd: " + randomPassword);
+
+            const name = user.displayName;
+            const email = user.email;
+            const username = email.split("@")[0];
+            const password = randomPassword;
+            const avatar = user.photoURL;
+
+            let res;
+            res = await apiRequest.post("/auth/register", {
+                name,
+                username,
+                email,
+                password,
+            });
+
+            res = await apiRequest.post("/auth/login", {
+                username: username,
+                password: password,
+            });
+            console.log("User logged");
+
+            updateUser(res.data);
+            navigate("/");
+
+            res = await apiRequest.put(`/users/${res.data.id}`, {
+                avatar: avatar,
+            });
+
+            updateUser(res.data);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            console.log(currentUser);
+
+            setIsLoading(false);
+        }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -92,7 +142,10 @@ const RegisterForm = () => {
                 </Link>
             </p>
             <div className="buttons-container">
-                <div className="google-login-button">
+                <div
+                    className="google-login-button"
+                    onClick={handleGoogleLogin}
+                >
                     <svg
                         stroke="currentColor"
                         fill="currentColor"
