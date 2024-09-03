@@ -3,6 +3,7 @@ import "./postReview.scss";
 import apiRequest from "../../lib/apiRequest";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import ReactStars from "react-rating-stars-component";
 
 const PostReview = ({ postId }) => {
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ const PostReview = ({ postId }) => {
     const [review, setReview] = useState({
         name: "",
         comment: "",
-        rating: "",
+        rating: 0,
     });
 
     const handleChange = (e) => {
@@ -18,6 +19,13 @@ const PostReview = ({ postId }) => {
         setReview((prevReview) => ({
             ...prevReview,
             [name]: value,
+        }));
+    };
+
+    const handleRatingChange = (newRating) => {
+        setReview((prevReview) => ({
+            ...prevReview,
+            rating: newRating,
         }));
     };
 
@@ -55,7 +63,7 @@ const PostReview = ({ postId }) => {
     return (
         <form className="postReview" onSubmit={handleSubmit}>
             <div className="item">
-                <label htmlFor="name">Name</label>
+                <label htmlFor="">Name</label>
                 <input
                     type="text"
                     name="name"
@@ -66,7 +74,7 @@ const PostReview = ({ postId }) => {
                 />
             </div>
             <div className="item">
-                <label htmlFor="city">Comment</label>
+                <label htmlFor="">Comment</label>
                 <textarea
                     rows={4}
                     type="text"
@@ -78,8 +86,8 @@ const PostReview = ({ postId }) => {
                 />
             </div>
             <div className="item">
-                <label htmlFor="city">Rating</label>
-                <input
+                <label htmlFor="">Rating</label>
+                {/* <input
                     type="number"
                     min={1}
                     max={5}
@@ -89,7 +97,15 @@ const PostReview = ({ postId }) => {
                     value={review.rating}
                     onChange={handleChange}
                     required
+                /> */}
+                <ReactStars
+                    count={5}
+                    onChange={handleRatingChange}
+                    size={24}
+                    activeColor="#ffd700"
+                    value={review.rating}
                 />
+
                 <button>
                     <img src="/write.png" alt="" />
                 </button>
