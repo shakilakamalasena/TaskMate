@@ -11,6 +11,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "./styles.css";
 import apiRequest from "../../lib/apiRequest";
 import { useLoaderData } from "react-router-dom";
+import ReactStars from "react-rating-stars-component";
 
 const ReviewCard = ({ postId }) => {
     const review = useLoaderData();
@@ -65,6 +66,13 @@ const ReviewCard = ({ postId }) => {
                                 <span>- {review.name}</span>
                                 <div className="rating">
                                     {generateStars(review.rating)}
+                                    <ReactStars
+                                        count={5}
+                                        value={review.rating}
+                                        size={24}
+                                        edit={false}
+                                        activeColor="#ffd700"
+                                    />
                                 </div>
                             </div>
                         </SwiperSlide>

@@ -55,7 +55,6 @@ const PostReview = ({ postId }) => {
                 });
             }
         } catch (error) {
-            // Handle error (e.g., show error message)
             console.error("Failed to post review:", error);
         }
     };
