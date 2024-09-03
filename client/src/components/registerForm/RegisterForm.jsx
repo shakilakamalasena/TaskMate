@@ -19,13 +19,10 @@ const RegisterForm = () => {
             const result = await signInWithPopup(auth, provider);
             const user = result.user;
 
-            const randomPassword = Math.random().toString(36).slice(-8);
-            console.log("random pwd: " + randomPassword);
-
             const name = user.displayName;
             const email = user.email;
             const username = email.split("@")[0];
-            const password = randomPassword;
+            const password = user.uid;
             const avatar = user.photoURL;
 
             let res;
@@ -40,7 +37,6 @@ const RegisterForm = () => {
                 username: username,
                 password: password,
             });
-            console.log("User logged");
 
             updateUser(res.data);
             navigate("/");
@@ -53,8 +49,6 @@ const RegisterForm = () => {
         } catch (err) {
             setError(err.message);
         } finally {
-            console.log(currentUser);
-
             setIsLoading(false);
         }
     };
