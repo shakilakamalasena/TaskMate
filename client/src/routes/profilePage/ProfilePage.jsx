@@ -45,7 +45,7 @@ const ProfilePage = () => {
                     <div className="title">
                         <h1>User Information</h1>
                         <Link to="/profile/update">
-                            <button>Update Profile</button>
+                            <button><i className='bx bx-cog'></i> Profile Setting</button>
                         </Link>
                     </div>
                     <div className="info">

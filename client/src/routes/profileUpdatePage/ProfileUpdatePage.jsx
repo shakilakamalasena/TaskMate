@@ -36,6 +36,10 @@ const ProfileUpdatePage = () => {
         }
     };
 
+    const handleDelete = async() => {
+        console.log("Delete profile button clicked...")
+    }
+
     return (
         <div className="profileUpdatePage">
             <div className="formContainer">
@@ -72,6 +76,7 @@ const ProfileUpdatePage = () => {
                             />
                             <button className="form-btn">Update Account</button>
                             {error && <span>error</span>}
+                            <button className="form-btn-red" onClick={handleDelete}>Delete Account</button>
                         </form>
                     </div>
                 </div>

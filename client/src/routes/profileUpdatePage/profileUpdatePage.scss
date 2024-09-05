@@ -82,6 +82,28 @@
                             box-shadow: none;
                         }
                     }
+
+                    .form-btn-red {
+                        padding: 10px 15px;
+                        font-family: "Poppins", sans-serif;
+                        border-radius: 20px;
+                        border: 0 !important;
+                        outline: 0 !important;
+                        background: #9c2c2c;
+                        color: white;
+                        cursor: pointer;
+                        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+                        &:hover {
+                            background-color: #c74c4c;
+                            scale: 1.02;
+                            transition: all 0.2s ease;
+                        }
+
+                        &:active {
+                            box-shadow: none;
+                        }
+                    }
                 }
             }
         }
