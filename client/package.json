@@ -14,6 +14,7 @@
     "axios": "^1.7.2",
     "baseui": "^0.0.0-next-18f01efe0",
     "dompurify": "^3.1.6",
+    "firebase": "^10.13.1",
     "leaflet": "^1.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
