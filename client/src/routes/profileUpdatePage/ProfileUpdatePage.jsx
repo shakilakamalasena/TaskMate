@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
 import { useNavigate } from "react-router-dom";
 import UploadWidget from "../../components/uploadWidget/UploadWidget";
+import Swal from "sweetalert2";
 
 const ProfileUpdatePage = () => {
     const { currentUser, updateUser } = useContext(AuthContext);
@@ -36,8 +37,27 @@ const ProfileUpdatePage = () => {
         }
     };
 
-    const handleDelete = async() => {
-        console.log("Delete profile button clicked...")
+    const handleDelete = async(e) => {
+        e.preventDefault();
+        const result = await Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you really want to delete your account? This action cannot be undone.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, keep it'
+        });
+
+        if (!result.isConfirmed) return;
+
+        try {
+            await apiRequest.delete(`/users/${currentUser.id}`);
+            Swal.fire('Deleted!', 'Your account has been deleted.', 'success');
+            navigate("/login");
+        } catch (err) {
+            console.log(err);
+            Swal.fire('Error!', 'Failed to delete your account.', 'error');
+        }
     }
 
     return (
