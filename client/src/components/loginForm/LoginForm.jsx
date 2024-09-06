@@ -51,7 +51,7 @@ const LoginForm = () => {
         const avatar = user.photoURL;
 
         let res;
-        
+
         try {
             res = await apiRequest.post("/auth/login", {
                 username,

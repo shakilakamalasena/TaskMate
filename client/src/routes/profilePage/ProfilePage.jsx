@@ -5,6 +5,7 @@ import ComingSoon from "../../components/comingSoon/ComingSoon";
 import { Await, Link, useLoaderData, useNavigate } from "react-router-dom";
 import { Suspense, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import Swal from "sweetalert2";
 
 const ProfilePage = () => {
     const data = useLoaderData();
@@ -21,20 +22,23 @@ const ProfilePage = () => {
     const savedByUserIds = data.postResponse.savedPostsPromise.data;
 
     const handleLogout = async () => {
+        const result = await Swal.fire({
+            title: "Are you sure?",
+            text: "Do you really want to logout?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: "Yes",
+            cancelButtonText: "No",
+        });
+
+        if (!result.isConfirmed) return;
+
         try {
             await apiRequest.post("/auth/logout");
             updateUser(null);
             navigate("/");
         } catch (err) {
             console.log(err);
-        }
-    };
-
-    const handleDelete = async () => {
-        try {
-            console.log("Delete button clicked...");
-        } catch (error) {
-            console.log(error);
         }
     };
 
@@ -45,7 +49,9 @@ const ProfilePage = () => {
                     <div className="title">
                         <h1>User Information</h1>
                         <Link to="/profile/update">
-                            <button><i className='bx bx-cog'></i> Profile Setting</button>
+                            <button>
+                                <i className="bx bx-cog"></i> Profile Setting
+                            </button>
                         </Link>
                     </div>
                     <div className="info">
