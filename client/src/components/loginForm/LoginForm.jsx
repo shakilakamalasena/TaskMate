@@ -60,7 +60,7 @@ const LoginForm = () => {
 
             updateUser(res.data);
 
-            navigate("/");
+            navigate("/profile");
         } catch (err) {
             if (err.response && err.response.status == 401) {
                 res = await apiRequest.post("/auth/register", {
@@ -76,7 +76,7 @@ const LoginForm = () => {
                 });
 
                 updateUser(res.data);
-                navigate("/");
+                navigate("/profile");
 
                 res = await apiRequest.put(`/users/${res.data.id}`, {
                     avatar: avatar,

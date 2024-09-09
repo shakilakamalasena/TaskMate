@@ -62,9 +62,6 @@ export const deleteUser = async (req, res) => {
     const id = req.params.id;
     const tokenUserId = req.userId;
 
-    console.log(id)
-    console.log(tokenUserId)
-
     if (id !== tokenUserId) {
         return res.status(403).json({ message: "Failed to update users!" });
     }

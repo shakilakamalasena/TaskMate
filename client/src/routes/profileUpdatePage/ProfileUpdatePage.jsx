@@ -7,7 +7,7 @@ import UploadWidget from "../../components/uploadWidget/UploadWidget";
 import Swal from "sweetalert2";
 
 const ProfileUpdatePage = () => {
-    const { currentUser, updateUser } = useContext(AuthContext);
+    const { currentUser, updateUser, clearUser } = useContext(AuthContext);
     const [error, setError] = useState("");
     const [avatar, setAvatar] = useState([]);
 
@@ -37,28 +37,29 @@ const ProfileUpdatePage = () => {
         }
     };
 
-    const handleDelete = async(e) => {
+    const handleDelete = async (e) => {
         e.preventDefault();
         const result = await Swal.fire({
-            title: 'Are you sure?',
+            title: "Are you sure?",
             text: "Do you really want to delete your account? This action cannot be undone.",
-            icon: 'warning',
+            icon: "warning",
             showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, keep it'
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, keep it",
         });
 
         if (!result.isConfirmed) return;
 
         try {
             await apiRequest.delete(`/users/${currentUser.id}`);
-            Swal.fire('Deleted!', 'Your account has been deleted.', 'success');
+            Swal.fire("Deleted!", "Your account has been deleted.", "success");
+            clearUser();
             navigate("/login");
         } catch (err) {
             console.log(err);
-            Swal.fire('Error!', 'Failed to delete your account.', 'error');
+            Swal.fire("Error!", "Failed to delete your account.", "error");
         }
-    }
+    };
 
     return (
         <div className="profileUpdatePage">
@@ -96,7 +97,12 @@ const ProfileUpdatePage = () => {
                             />
                             <button className="form-btn">Update Account</button>
                             {error && <span>error</span>}
-                            <button className="form-btn-red" onClick={handleDelete}>Delete Account</button>
+                            <button
+                                className="form-btn-red"
+                                onClick={handleDelete}
+                            >
+                                Delete Account
+                            </button>
                         </form>
                     </div>
                 </div>

@@ -40,7 +40,7 @@ const RegisterForm = () => {
             });
 
             updateUser(res.data);
-            navigate("/");
+            navigate("/profile");
 
             res = await apiRequest.put(`/users/${res.data.id}`, {
                 avatar: avatar,
@@ -56,7 +56,7 @@ const RegisterForm = () => {
 
                 updateUser(res.data);
 
-                navigate("/");
+                navigate("/profile");
             } else {
                 setError(err.message);
             }
