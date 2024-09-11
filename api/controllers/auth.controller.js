@@ -22,12 +22,14 @@ export const register = async (req, res) => {
         res.status(201).json({ message: "User created successfully!" });
     } catch (err) {
         console.log(err);
-        res.status(500).json({ message: "Failed to create user! (username/email exists)" });
+        res.status(500).json({
+            message: "Failed to create user! (username/email exists)",
+        });
     }
 };
 
 export const login = async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, cookieConsent } = req.body;
 
     try {
         // CHECK IF THE USER EXISTS
@@ -67,15 +69,31 @@ export const login = async (req, res) => {
             { expiresIn: age }
         );
 
-        const { password: userPassword, ...userInfo } = user;
+        // If the user accepts cookies, set the token as a cookie
+        if (cookieConsent === "true") {
+            res.cookie("token", token, {
+                httpOnly: true,
+                maxAge: age,
+            });
+        } else {
+            res.cookie("token", token, {
+                httpOnly: true,
+            });
+        }
 
-        res.cookie("token", token, {
-            httpOnly: true,
-            // secure: true,
-            maxAge: age,
-        })
-            .status(200)
-            .json(userInfo);
+        // Send user data, but exclude password
+        const { password: userPassword, ...userInfo } = user;
+        res.status(200).json(userInfo);
+
+        // const { password: userPassword, ...userInfo } = user;
+
+        // res.cookie("token", token, {
+        //     httpOnly: true,
+        //     // secure: true,
+        //     maxAge: age,
+        // })
+        //     .status(200)
+        //     .json(userInfo);
     } catch (err) {
         console.log(err);
         res.status(500).json({ message: "Failed to login!" });

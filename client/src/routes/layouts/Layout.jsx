@@ -3,16 +3,21 @@ import { Navigate, Outlet } from "react-router-dom";
 import "./layout.scss";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import CookieConsent from "../../components/cookieConsent/CookieConsent";
+import { CookieConsentProvider } from "../../context/CookieConsentContext";
 
 const Layout = () => {
     return (
         <div className="layout">
-            <div className="navbar">
-                <Navbar />
-            </div>
-            <div className="content">
-                <Outlet />
-            </div>
+            <CookieConsentProvider>
+                <div className="navbar">
+                    <Navbar />
+                    <CookieConsent />
+                </div>
+                <div className="content">
+                    <Outlet />
+                </div>
+            </CookieConsentProvider>
         </div>
     );
 };

@@ -5,6 +5,7 @@ import "./loginForm.scss";
 import { AuthContext } from "../../context/AuthContext";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../lib/firebase";
+import { CookieConsentContext } from "../../context/CookieConsentContext";
 
 const LoginForm = () => {
     const [error, setError] = useState("");
@@ -13,6 +14,8 @@ const LoginForm = () => {
     const { updateUser } = useContext(AuthContext);
 
     const navigate = useNavigate();
+
+    const { cookieConsent } = useContext(CookieConsentContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,6 +30,7 @@ const LoginForm = () => {
             const res = await apiRequest.post("/auth/login", {
                 username,
                 password,
+                cookieConsent,
             });
 
             updateUser(res.data);
@@ -56,6 +60,7 @@ const LoginForm = () => {
             res = await apiRequest.post("/auth/login", {
                 username,
                 password,
+                cookieConsent,
             });
 
             updateUser(res.data);
