@@ -1,23 +1,20 @@
 import Navbar from "../../components/navbar/Navbar";
 import { Navigate, Outlet } from "react-router-dom";
 import "./layout.scss";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import CookieConsent from "../../components/cookieConsent/CookieConsent";
-import { CookieConsentProvider } from "../../context/CookieConsentContext";
 
 const Layout = () => {
     return (
         <div className="layout">
-            <CookieConsentProvider>
-                <div className="navbar">
-                    <Navbar />
-                    <CookieConsent />
-                </div>
-                <div className="content">
-                    <Outlet />
-                </div>
-            </CookieConsentProvider>
+            <div className="navbar">
+                <Navbar />
+                <CookieConsent />
+            </div>
+            <div className="content">
+                <Outlet />
+            </div>
         </div>
     );
 };
