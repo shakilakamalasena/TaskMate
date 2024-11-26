@@ -27,6 +27,37 @@
                 font-size: 48px;
             }
 
+            .all-link {
+                display: flex;
+                align-items: center;
+                color: #6e8ae9;
+                text-decoration: none;
+
+                span {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px; 
+                }
+
+                i {
+                    font-size: 18px; 
+                    animation: moveIcon 1s linear infinite;
+                }
+            }
+
+            @keyframes moveIcon {
+                0% {
+                    transform: translateX(0);
+                }
+                50% {
+                    transform: translateX(5px);
+                    scale: 1.1;
+                }
+                100% {
+                    transform: translateX(0);
+                }
+            }
+
             .boxes {
                 display: flex;
                 justify-content: space-between;
