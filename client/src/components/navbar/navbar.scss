@@ -9,7 +9,7 @@ nav {
     a {
         transition: all 0.4s ease;
 
-        @include sm {
+        @include md {
             display: none;
         }
 
@@ -35,15 +35,15 @@ nav {
                 width: 55px;
             }
 
-            span {
-                @include md {
-                    display: none;
-                }
+            // span {
+            //     @include md {
+            //         display: none;
+            //     }
 
-                @include sm {
-                    display: initial;
-                }
-            }
+            //     @include sm {
+            //         display: initial;
+            //     }
+            // }
         }
     }
     .right {
@@ -81,7 +81,7 @@ nav {
                 //     display: none;
                 // }
 
-                @include sm {
+                @include md {
                     display: none;
                 }
             }
@@ -134,7 +134,7 @@ nav {
 
         .menuIcon {
             display: none;
-            z-index: 999;
+            z-index: 1000;
 
             img {
                 width: 36px;
@@ -142,13 +142,13 @@ nav {
                 cursor: pointer;
             }
 
-            @include sm {
+            @include md {
                 display: inline;
             }
         }
 
         .menu {
-            position: absolute;
+            position: fixed;
             top: 0;
             right: -50%;
             background-color: #091638;
@@ -161,6 +161,7 @@ nav {
             align-items: center;
             justify-content: center;
             font-size: 24px;
+            z-index: 999;
 
             &.active {
                 right: 0;
@@ -173,7 +174,7 @@ nav {
                 }
             }
 
-            @include sm {
+            @include md {
                 a {
                     display: initial;
                 }
