@@ -43,7 +43,9 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className="imgContainer">{/* <img src="/bg.png" alt="" /> */}</div>
+      <div className="imgContainer">
+        <img src="/background.png" alt="" />
+      </div>
     </div>
   );
 };
